@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "AI-Shield Generator - Protection contre les bots IA",
   "engines": {
-    "node": ">=23.x"
+    "node": ">=22.x"
   },
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",

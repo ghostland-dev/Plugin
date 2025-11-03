@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "name": "vercel-serverless-function",
+  "version": "1.0.0",
+  "description": "Vercel Serverless Function for API routes"
+}
+

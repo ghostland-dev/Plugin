@@ -1,7 +1,7 @@
 // Fichier pour Vercel Serverless Functions
 // Ce fichier adapte l'application Express pour Vercel
 // Toutes les routes API sont gérées ici via Vercel rewrites
-// Configuration: maxDuration 60s, memory 1024MB (via api/index.json)
+// Configuration: maxDuration 60s, memory 1024MB (via vercel.json)
 
 import express from 'express';
 import cors from 'cors';

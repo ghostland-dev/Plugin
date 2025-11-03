@@ -9,24 +9,15 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="
-        relative inline-flex h-8 w-16 items-center rounded-full
-        bg-gray-200 dark:bg-gray-700
-        transition-colors duration-300 ease-in-out
-        focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
-        dark:focus:ring-offset-gray-800
-        hover:bg-gray-300 dark:hover:bg-gray-600
-      "
+      type="button"
+      className="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 hover:bg-gray-300 dark:hover:bg-gray-600 cursor-pointer"
       aria-label={`Basculer vers le mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
       title={`Basculer vers le mode ${theme === 'dark' ? 'clair' : 'sombre'}`}
     >
       <span
-        className="
-          inline-block h-6 w-6 transform rounded-full bg-white dark:bg-gray-300
-          transition-transform duration-300 ease-in-out
-          shadow-lg
-          ${theme === 'dark' ? 'translate-x-9' : 'translate-x-1'}
-        "
+        className={`inline-block h-6 w-6 transform rounded-full bg-white dark:bg-gray-300 transition-transform duration-300 ease-in-out shadow-lg ${
+          theme === 'dark' ? 'translate-x-9' : 'translate-x-1'
+        }`}
       >
         <span className="flex h-full w-full items-center justify-center">
           {theme === 'dark' ? (

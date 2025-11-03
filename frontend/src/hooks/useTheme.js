@@ -7,15 +7,22 @@ import { useEffect, useState } from 'react';
 export function useTheme() {
   const [theme, setTheme] = useState(() => {
     // Récupérer depuis localStorage ou utiliser la préférence système
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme && (savedTheme === 'dark' || savedTheme === 'light')) {
+        return savedTheme;
+      }
+      // Détecter la préférence système
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
     }
-    // Détecter la préférence système
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'light'; // Par défaut
   });
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
     const root = window.document.documentElement;
     
     // Retirer les classes précédentes
@@ -28,8 +35,14 @@ export function useTheme() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Écouter les changements de préférence système
+  // Écouter les changements de préférence système (seulement si aucune préférence utilisateur)
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const savedTheme = localStorage.getItem('theme');
+    // Ne suivre la préférence système que si l'utilisateur n'a pas encore fait de choix
+    if (savedTheme) return;
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
     const handleChange = (e) => {

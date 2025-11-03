@@ -36,20 +36,31 @@ router.post('/create-session', paymentValidation, async (req, res) => {
     }
 
     if (!process.env.STRIPE_SECRET_KEY) {
-      return res.status(500).json({ error: 'Stripe non configuré' });
+      console.error('❌ STRIPE_SECRET_KEY non configuré');
+      console.error('   Variables d\'environnement disponibles:', Object.keys(process.env).filter(k => k.includes('STRIPE')));
+      return res.status(500).json({ 
+        error: 'Stripe non configuré',
+        details: 'La variable d\'environnement STRIPE_SECRET_KEY n\'est pas définie. Vérifiez la configuration dans Vercel Dashboard > Settings > Environment Variables.'
+      });
     }
 
     const { server_type, domain, include_legal, email } = req.body;
     const sessionId = uuidv4();
 
     // Créer l'entrée en base de données
-    createGeneration({
-      session_id: sessionId,
-      domain: domain || null,
-      server_type,
-      include_legal: include_legal || false,
-      email: email || null
-    });
+    try {
+      createGeneration({
+        session_id: sessionId,
+        domain: domain || null,
+        server_type,
+        include_legal: include_legal || false,
+        email: email || null
+      });
+      console.log(`✅ Génération créée en base pour session: ${sessionId}`);
+    } catch (dbError) {
+      console.error('❌ Erreur création génération en base:', dbError);
+      // Ne pas bloquer, mais logger l'erreur
+    }
 
     // Créer la session Stripe Checkout avec le prix existant
     const stripePriceId = process.env.STRIPE_PRICE_ID || 'price_1SPAL9EDWgz2TvU16QPlkmg5';

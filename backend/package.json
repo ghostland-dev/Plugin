@@ -11,6 +11,7 @@
     "dev": "nodemon index.js"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "archiver": "^6.0.1",
     "better-sqlite3": "^12.4.1",
     "cors": "^2.8.5",

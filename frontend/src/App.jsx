@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import LandingPage from './pages/LandingPage';
 import SuccessPage from './pages/SuccessPage';
 import CancelPage from './pages/CancelPage';
@@ -15,6 +16,7 @@ function App() {
         <Route path="/download/:sessionId" element={<DownloadPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
+      <SpeedInsights />
     </Router>
   );
 }

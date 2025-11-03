@@ -139,6 +139,11 @@ export default function PaymentForm({ onSuccess }) {
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
           <span className="text-base font-semibold">Type de serveur *</span>
           <span className="block text-xs text-gray-500 dark:text-gray-400 mt-1">Sélectionnez le type de serveur web que vous utilisez</span>
+          {error === 'Veuillez sélectionner un type de serveur' && (
+            <span className="block text-xs text-red-600 dark:text-red-400 mt-2 animate-pulse">
+              ⚠️ Ce champ est obligatoire
+            </span>
+          )}
         </label>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {[
@@ -154,13 +159,20 @@ export default function PaymentForm({ onSuccess }) {
             <button
               key={server.value}
               type="button"
-              onClick={() => setServerType(server.value)}
+              onClick={() => {
+                setServerType(server.value);
+                // Effacer l'erreur si elle existe
+                if (error === 'Veuillez sélectionner un type de serveur') {
+                  setError('');
+                }
+              }}
               className={`
                 p-4 border-2 rounded-xl transition-all transform hover:scale-105 flex flex-col items-center justify-center
                 ${serverType === server.value
                   ? `border-primary-600 dark:border-primary-500 bg-gradient-to-br ${server.color} text-white shadow-lg dark:shadow-primary-500/30`
                   : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 bg-white dark:bg-gray-800 hover:shadow-md dark:hover:shadow-gray-900/50'
                 }
+                ${error === 'Veuillez sélectionner un type de serveur' ? 'ring-2 ring-red-500 dark:ring-red-400' : ''}
               `}
             >
               <div className="mb-2 flex items-center justify-center">

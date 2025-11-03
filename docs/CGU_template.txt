@@ -1,0 +1,56 @@
+CONDITIONS GÉNÉRALES D'UTILISATION
+AI-SHIELD GENERATOR
+
+1. OBJET
+Les présentes Conditions Générales d'Utilisation (CGU) régissent l'utilisation du service 
+AI-Shield Generator, un micro-SaaS permettant de générer des fichiers de protection 
+contre les bots d'intelligence artificielle et les scrapers.
+
+2. ACCEPTATION DES CGU
+L'utilisation du service implique l'acceptation sans réserve des présentes CGU.
+
+3. DESCRIPTION DU SERVICE
+AI-Shield Generator permet de générer automatiquement des fichiers de configuration 
+(robots.txt, .htaccess, nginx.conf, headers.js) pour protéger un site web contre 
+les bots IA et scrapers.
+
+4. PRIX ET PAIEMENT
+Le service est proposé au prix de 5 € (cinq euros) par génération.
+Le paiement est effectué via Stripe, de manière sécurisée.
+Le paiement est unique et non remboursable, sauf cas exceptionnels.
+
+5. UTILISATION DU SERVICE
+L'utilisateur s'engage à utiliser le service de manière légale et conforme.
+Le service est limité à 3 générations par adresse IP par jour.
+Les fichiers générés sont disponibles au téléchargement pendant 24 heures.
+
+6. PROPRIÉTÉ INTELLECTUELLE
+Les fichiers générés sont la propriété de l'utilisateur.
+Le service AI-Shield Generator conserve les droits sur le code source et la méthode 
+de génération.
+
+7. RESPONSABILITÉ
+Le service est fourni "tel quel", sans garantie explicite ou implicite.
+AI-Shield Generator ne peut être tenu responsable des dommages résultant de 
+l'utilisation ou de l'impossibilité d'utiliser le service.
+
+8. MODIFICATIONS
+AI-Shield Generator se réserve le droit de modifier les présentes CGU à tout moment.
+Les utilisateurs seront informés des modifications majeures.
+
+9. DONNÉES PERSONNELLES
+Les données collectées (email, domaine, type de serveur) sont utilisées uniquement 
+pour fournir le service.
+Conformément au RGPD, les utilisateurs disposent d'un droit d'accès, de rectification 
+et de suppression de leurs données.
+
+10. DURÉE ET RÉSILIATION
+Le service est disponible 24/7, sous réserve de maintenance.
+AI-Shield Generator se réserve le droit de suspendre ou interrompre le service à tout moment.
+
+11. LOI APPLICABLE
+Les présentes CGU sont régies par le droit français.
+Tout litige relève de la compétence des tribunaux français.
+
+Date d'entrée en vigueur: [DATE]
+

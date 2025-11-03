@@ -1,0 +1,31 @@
+# robots.txt pour le site AI-Shield Generator
+# Ce fichier est pour le site web lui-même, pas pour les packs générés
+
+User-agent: *
+Allow: /
+
+# Autoriser tous les moteurs de recherche
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Autoriser l'indexation
+Sitemap: https://aishield.app/sitemap.xml
+
+# Pages à ne pas indexer
+Disallow: /admin
+Disallow: /success
+Disallow: /cancel
+Disallow: /download/
+
+# Autoriser les ressources
+Allow: /static/
+Allow: /assets/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.svg
+

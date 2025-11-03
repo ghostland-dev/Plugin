@@ -1,0 +1,27 @@
+{
+  "name": "ai-shield-generator",
+  "version": "1.0.0",
+  "description": "AI-Shield Generator - Protection contre les bots IA",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "vercel-build": "npm run install:all && npm run build",
+    "test:vercel": "./vercel-test.sh"
+  },
+  "keywords": [
+    "ai-shield",
+    "protection",
+    "bots",
+    "scraping"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
+  }
+}

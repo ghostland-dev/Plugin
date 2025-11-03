@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Détecter automatiquement l'URL de l'API
-// Sur Vercel, utiliser l'URL actuelle pour les API routes (même domaine)
+// En production, utiliser l'URL actuelle pour les API routes (même domaine)
 // En local, utiliser l'URL du backend
 const getApiUrl = () => {
   // Si une URL est explicitement définie dans les variables d'environnement
@@ -11,11 +11,12 @@ const getApiUrl = () => {
     return url.endsWith('/api') ? url.slice(0, -4) : url;
   }
   
-  // Si on est sur Vercel (même domaine), utiliser le chemin relatif
+  // En production (pas en localhost), utiliser le même domaine que le frontend
   // Les routes API sont au même domaine que le frontend
   if (typeof window !== 'undefined') {
     const hostname = window.location.hostname;
-    if (hostname.includes('vercel.app') || hostname.includes('vercel.com') || hostname.includes('vercel.sh')) {
+    // Si on n'est pas en localhost, on est en production
+    if (hostname !== 'localhost' && hostname !== '127.0.0.1') {
       return window.location.origin;
     }
   }

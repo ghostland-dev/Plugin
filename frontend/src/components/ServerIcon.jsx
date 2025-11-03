@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 /**
  * Composant pour afficher les icônes de serveurs depuis dashboardicons.com
  * https://dashboardicons.com/icons
@@ -42,6 +44,8 @@ export default function ServerIcon({
   className = '',
   alt 
 }) {
+  const [iconError, setIconError] = useState(false);
+
   if (!serverType || !SERVER_ICON_MAP[serverType]) {
     return null;
   }
@@ -49,17 +53,25 @@ export default function ServerIcon({
   const iconName = SERVER_ICON_MAP[serverType];
   const iconUrl = `${ICON_BASE_URL}/${format}/${iconName}.${format}`;
   const altText = alt || `${serverType} icon`;
+  
+  // Utiliser une icône générique en cas d'erreur
+  const fallbackIconUrl = `${ICON_BASE_URL}/${format}/shield.${format}`;
 
   return (
     <img
-      src={iconUrl}
+      src={iconError ? fallbackIconUrl : iconUrl}
       alt={altText}
       className={`${size} object-contain ${className}`}
       loading="lazy"
       onError={(e) => {
         // Fallback en cas d'erreur de chargement
-        console.warn(`Failed to load icon for ${serverType}, using fallback`);
-        e.target.style.display = 'none';
+        if (!iconError) {
+          console.warn(`Failed to load icon for ${serverType}, using fallback`);
+          setIconError(true);
+        } else {
+          // Si le fallback échoue aussi, masquer l'image
+          e.target.style.display = 'none';
+        }
       }}
     />
   );

@@ -75,4 +75,9 @@ export const downloadPack = async (sessionId) => {
   return response.data;
 };
 
+export const getAdminStats = async () => {
+  const response = await api.get('/api/admin/stats');
+  return response.data;
+};
+
 export default api;
